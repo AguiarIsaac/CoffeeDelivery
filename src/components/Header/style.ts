@@ -5,6 +5,7 @@ export const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
 `
 
 export const Options = styled.div`
