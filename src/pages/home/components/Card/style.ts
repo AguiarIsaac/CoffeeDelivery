@@ -8,9 +8,6 @@ export const CardContent = styled.div`
   max-width: 16rem;
   height: 19rem;
 
-  /* Remover depois*/
-  margin: 0 auto;
-  margin-top: 10rem;
 
   display: flex;
   flex-direction: column;
@@ -92,21 +89,28 @@ export const CounterCard = styled.div`
     background: #4B2995;
     border-radius: 4px;
     padding: 2px 4px;
+    width: 38px;
+    height: 38px;
   }
 `
 
 export const Counter = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.25rem;
   /* Base/Button */
   background: #E6E5E5;
   border-radius: 6px;
-  padding: 4px 8px;
+  /*padding: 4px 8px;*/
+  width: 72px;
+  height: 38px;
 
   button {
     background: none;
     border: none;
     color: #8047F8;
     cursor: pointer;
+    font-size: 20px;
   }
 `

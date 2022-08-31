@@ -1,4 +1,4 @@
-import { BannerContainer, Benefits, CardContent, Cards, TextsContainer } from "./style";
+import { BannerContainer, Benefits, Content, Cards, TextsContainer } from "./style";
 
 import Cart from '../../assets/icons/Banner_Cart.svg'
 import Timer from '../../assets/icons/Banner_Timer.svg'
@@ -28,13 +28,19 @@ export function Home() {
           <img src={CoffeePage} alt="Copo de café e grãos" /> 
         </BannerContainer>
 
-        <CardContent>
+        <Content>
           <h3>Nossos Cafés</h3>
           
           <Cards>
             <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </Cards>
-        </CardContent>
+        </Content>
       </>
     )
 }

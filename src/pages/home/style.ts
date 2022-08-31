@@ -5,6 +5,7 @@ export const BannerContainer = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 5.875rem;
+  margin-bottom: 7rem;
 
   //background: rgb(128,71,248);
   //background: linear-gradient(77deg, rgba(128,71,248,0.13769257703081228) 0%, rgba(244,225,165,0.25253851540616246) 91%, rgba(235,193,54,0.3253676470588235) 100%);
@@ -46,11 +47,9 @@ export const Benefits = styled.div`
   }
 `
 
-export const CardContent = styled.div`
-  margin-top: 2rem;
-
+export const Content = styled.div`
   h3 {
-    margin-bottom: 2rem;
+    margin-bottom: 2.125rem;
 
     font-family: 'Baloo 2';
     font-style: normal;
@@ -64,4 +63,9 @@ export const CardContent = styled.div`
 `
 
 export const Cards = styled.div`
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
 `
