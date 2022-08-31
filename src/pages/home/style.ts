@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const BannerContainer = styled.div`
+export const BannerContainer = styled.section`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -47,7 +47,7 @@ export const Benefits = styled.div`
   }
 `
 
-export const Content = styled.div`
+export const Content = styled.section`
   h3 {
     margin-bottom: 2.125rem;
 
