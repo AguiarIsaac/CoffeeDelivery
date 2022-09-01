@@ -1,28 +1,32 @@
+import { Trash } from 'phosphor-react'
 import cafe from '../../assets/img/coffees/americano.svg'
-import { Content } from './style'
+import { Actions, ButtonRemove, Content, Counter, Info, Price } from './style'
 
 export function MiniCard() {
     return (
         <Content>
-            <div className="info">
+            <Info>
                 <img src={cafe} alt="cafezinho" />
                 <div className="details">
                     <p>Expresso Tradicional</p>
-                    <div className="actions">
-                        <div>
+                    <Actions>
+                        <Counter>
                             <button>-</button>
                             <p>1</p>
                             <button>+</button>
-                        </div>
+                        </Counter>
 
                         <div>
-                            <button>Remover</button>
+                            <ButtonRemove>
+                                <Trash />
+                                REMOVER
+                            </ButtonRemove>
                         </div>
-                    </div>
+                    </Actions>
                 </div>
-            </div>
+            </Info>
 
-            <p>R$ 9,90</p>
+            <Price>R$ 9,90</Price>
         </Content>
     )
 }
