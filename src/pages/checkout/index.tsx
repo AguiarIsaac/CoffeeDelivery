@@ -1,5 +1,6 @@
 import { FormContainer, Frame1, Frame2 } from "./style";
 import { MiniCard } from "../../components/MiniCard";
+import { MapPinLine } from "phosphor-react";
 
 export function Checkout() {
     return (
@@ -8,6 +9,9 @@ export function Checkout() {
             <div>
               <h4>Complete seu pedido</h4>
               <Frame1>
+                <span><MapPinLine size={24}/> <p>Endereço de Entrega</p></span>
+                <p>Informe o endereço onde deseja receber o pedido</p>
+                
                 <input type="text" placeholder="CEP" name="CEP" id="CEP" />
                 <input type="text" placeholder="Rua" name="RUA" id="RUA" />
                 <input type="text" placeholder="Número" name="NUM" id="NUM" />
