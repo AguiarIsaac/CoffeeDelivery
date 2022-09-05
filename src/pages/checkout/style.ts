@@ -8,17 +8,14 @@ export const FormContainer = styled.form`
     margin-bottom: 2rem;
     font-family: 'Baloo 2';
     font-weight: bold;
-    /* Base/Subtitle */
-    color: #403937;
+    color: ${props => props.theme.colors.baseSubtitle};
   }
 `
 
 export const Frame1 = styled.div`
   max-width: 40rem;
   padding: 2.5rem;
-  
-  /* Base/Card */
-  background: #F3F2F2;
+  background: ${props => props.theme.colors.baseCard};
   border-radius: 6px;
 
   `
@@ -28,12 +25,11 @@ export const HeaderFrame1 = styled.div`
   gap: 0.5rem;
   
   svg {
-    color: #C47F17;
+    color: ${props => props.theme.colors.yellowDark};
   }
 
   div p:nth-child(1){
-  /* Base/Subtitle */
-  color: #403937;
+  color: ${props => props.theme.colors.baseSubtitle};
   font-weight: bold;
   margin-bottom: 0.5rem;
   }
@@ -51,13 +47,10 @@ export const InputGroup = styled.div`
 
   input {
     padding: 12px;
-    /* Base/Input */
-    background: #EEEDED;
-    /* Base/Button */
-    border: 1px solid #E6E5E5;
+    background: ${props => props.theme.colors.baseInput};
+    border: 1px solid ${props => props.theme.colors.baseButton};
     border-radius: 4px;
-    /* Base/Label */
-    color: #8D8686;
+    color: ${props => props.theme.colors.baseLabel};
   }
 
   input#CEP {
@@ -90,8 +83,7 @@ export const InputGroup = styled.div`
 export const PaymentMethods = styled.div`
   margin-top: 0.75rem;
   padding: 2.5rem;
-  /* Base/Card */
-  background: #F3F2F2;
+  background: ${props => props.theme.colors.baseCard};
   border-radius: 6px;
 
   span {
@@ -100,8 +92,7 @@ export const PaymentMethods = styled.div`
   }
 
   span.titlePayment {
-    /* Base/Subtitle */
-    color: #403937;
+    color: ${props => props.theme.colors.baseSubtitle};
     font-weight: bold;
     line-height: 130%;
   }
@@ -112,8 +103,7 @@ export const PaymentMethods = styled.div`
   }
 
   span svg {
-    /* Brand/Purple */
-    color: #8047F8;
+    color: ${props => props.theme.colors.purple};
   }
 
   div {
@@ -122,7 +112,6 @@ export const PaymentMethods = styled.div`
   }
 
   div span {
-    /* Base/Button */
     gap: 0.75rem;
     background: #E6E5E5;
     border-radius: 6px;
@@ -132,13 +121,8 @@ export const PaymentMethods = styled.div`
 
     font-size: 10px;
     line-height: 160%;
-    /* or 19px */
-
     text-transform: uppercase;
-
-    /* Base/Text */
-
-    color: #574F4D;
+    color: ${props => props.theme.colors.baseText};
 
   }
 `
@@ -146,7 +130,6 @@ export const PaymentMethods = styled.div`
 export const Frame2 = styled.div`
   width: 28rem;
   padding: 2.5rem;
-  /* Base/Card */
-  background: #F3F2F2;
+  background: ${props => props.theme.colors.baseCard};
   border-radius: 6px 44px;
 `

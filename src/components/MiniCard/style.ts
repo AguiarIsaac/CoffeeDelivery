@@ -3,20 +3,12 @@ import styled from 'styled-components'
 export const Content = styled.div`
   width: 23rem;
   height: 5rem;
-
-  /* Base/Card */
-  background: #F3F2F2;
-
-  /* Base/Subtitle */
-  color: #403937;
-
+  background: ${props => props.theme.colors.baseCard};
+  color: ${props => props.theme.colors.baseSubtitle};
   display: flex;
   padding: 0.5rem 0.25rem;
   justify-content: space-between;
-
-  /* Base/Button */
-
-  border-bottom: 1px solid #E6E5E5;
+  border-bottom: 1px solid ${props => props.theme.colors.baseButton};
 `
 
 export const Price = styled.p`
@@ -33,10 +25,8 @@ export const Counter = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  /* Base/Button */
-  background: #E6E5E5;
+  background: ${props => props.theme.colors.baseButton};
   border-radius: 6px;
-  /*padding: 4px 8px;*/
   width: 4.5rem;
   height: 2rem;
   padding:8px;
@@ -44,7 +34,7 @@ export const Counter = styled.div`
   button {
     background: none;
     border: none;
-    color: #8047F8;
+    color: ${props => props.theme.colors.purple};
     cursor: pointer;
     font-size: 20px;
   }
@@ -62,10 +52,8 @@ export const ButtonRemove = styled.button`
   width: 5.8rem;
   height: 2rem;
   border-radius: 6px;
-  /* Base/Button */
-  background: #E6E5E5;
-  /* Base/Text */
-  color: #574F4D;
+  background: ${props => props.theme.colors.baseButton};
+  color: ${props => props.theme.colors.baseText};
 
   font-size: 12px;
   font-weight: 400;
@@ -78,7 +66,6 @@ export const ButtonRemove = styled.button`
   gap: 0.5rem;
 
   svg {
-    /* Brand/Purple */
-    color: #8047F8;
+    color: ${props => props.theme.colors.purple};
   }
 `

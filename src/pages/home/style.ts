@@ -6,9 +6,6 @@ export const BannerContainer = styled.section`
   justify-content: space-between;
   margin-top: 5.875rem;
   margin-bottom: 7rem;
-
-  //background: rgb(128,71,248);
-  //background: linear-gradient(77deg, rgba(128,71,248,0.13769257703081228) 0%, rgba(244,225,165,0.25253851540616246) 91%, rgba(235,193,54,0.3253676470588235) 100%);
 `
 
 export const TextsContainer = styled.div`
@@ -19,7 +16,7 @@ export const TextsContainer = styled.div`
     font-weight: 800;
     font-size: 48px;
     line-height: 130%;
-    color: #272221; /*Base/Title*/
+    color: ${props => props.theme.colors.baseTitle};
   }
 
   p {
@@ -27,7 +24,7 @@ export const TextsContainer = styled.div`
     max-width: 34rem;
     font-size: 20px;
     line-height: 130%;
-    color: #403937;
+    color: ${props => props.theme.colors.baseSubtitle};
     font-stretch: 100;
   }
 `
@@ -50,15 +47,12 @@ export const Benefits = styled.div`
 export const Content = styled.section`
   h3 {
     margin-bottom: 2.125rem;
-
     font-family: 'Baloo 2';
     font-style: normal;
     font-weight: 800;
     font-size: 32px;
     line-height: 130%;
-
-    /* Base/Subtitle */
-    color: #403937;
+    color: ${props => props.theme.colors.baseSubtitle};
   }
 `
 

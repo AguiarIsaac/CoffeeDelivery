@@ -1,14 +1,19 @@
-import { BrowserRouter } from "react-router-dom"
-import { Router } from "./Routes"
-import { Globalstyle } from "./styles/globalstyle"
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Routes'
+import { Globalstyle } from './styles/globalstyle'
+import { ThemeProvider } from 'styled-components'
+import  light  from './styles/themes/light'
+
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-      <Globalstyle />
+      <ThemeProvider theme={light}>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+        <Globalstyle />
+      </ThemeProvider>
     </>
   )
 }
