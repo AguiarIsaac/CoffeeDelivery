@@ -42,6 +42,30 @@ export const Benefits = styled.div`
     align-items: center;
     gap: 1.375rem;
   }
+
+  p svg {
+    width: 2rem;
+    height: auto;
+    border-radius: 50%;
+    padding: 8px;
+    color: ${props => props.theme.colors.backgorund};
+  }
+
+  p#Cart svg {
+    background: ${props => props.theme.colors.yellowDark};
+  }
+
+  p#Package svg {
+    background: ${props => props.theme.colors.baseText};
+  }
+
+  p#Timer svg {
+    background: ${props => props.theme.colors.yellow};
+  }
+
+  p#Coffee svg {
+    background: ${props => props.theme.colors.purple};
+  }
 `
 
 export const Content = styled.section`

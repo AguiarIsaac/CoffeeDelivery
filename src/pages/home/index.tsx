@@ -1,11 +1,8 @@
 import { BannerContainer, Benefits, Content, Cards, TextsContainer } from "./style";
 
-import Cart from '../../assets/icons/Banner_Cart.svg'
-import Timer from '../../assets/icons/Banner_Timer.svg'
-import Box from '../../assets/icons/Banner_Box.svg'
-import Coffee from '../../assets/icons/Banner_Coffee.svg'
 import CoffeePage from '../../assets/img/Banner_CoffeeP.svg'
 import { Card } from "./components/Card";
+import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 
 export function Home() {
     return (
@@ -18,10 +15,10 @@ export function Home() {
             </TextsContainer>
 
             <Benefits>
-              <p><img src={Cart}/>Compra simples e segura</p>
-              <p><img src={Box}/>Embalagem mantém o café intacto</p>
-              <p><img src={Timer}/>Entrega rápida e rastreada</p>
-              <p><img src={Coffee}/>o café chega fresquinho até covê</p>
+              <p id="Cart"><ShoppingCart/> Compra simples e segura</p>
+              <p id="Package"><Package/> Embalagem mantém o café intacto</p>
+              <p id="Timer"><Timer/> Entrega rápida e rastreada</p>
+              <p id="Coffee"><Coffee/>o café chega fresquinho até covê</p>
             </Benefits>
           </div>
 
