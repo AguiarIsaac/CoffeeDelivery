@@ -25,7 +25,6 @@ export function MiniCard() {
                     </Actions>
                 </div>
             </Info>
-
             <Price>R$ 9,90</Price>
         </Content>
     )

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const FormContainer = styled.form`
   display: flex;
   gap: 2rem;
+  justify-content: center;
 
   h4 {
     margin-bottom: 2rem;
@@ -132,4 +133,38 @@ export const Frame2 = styled.div`
   padding: 2.5rem;
   background: ${props => props.theme.colors.baseCard};
   border-radius: 6px 44px;
+  color: ${props => props.theme.colors.baseText};
+  
+`
+
+export const Frame21 = styled.div`
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+`
+
+export const Frame22 = styled.div`
+  display: flex;
+  margin-bottom: 0.75rem;
+  justify-content: space-between;
+`
+
+export const Frame23 = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: ${props => props.theme.colors.baseTitle};
+`
+
+export const Enviar = styled.button`
+ border: none;
+  width: 100%;
+  background: ${props => props.theme.colors.yellow};
+  border-radius: 6px;
+  padding: 12px 8px;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: ${props => props.theme.colors.white};
 `

@@ -1,4 +1,4 @@
-import { FormContainer, Frame1, Frame2, HeaderFrame1, InputGroup, PaymentMethods } from "./style";
+import { Enviar, FormContainer, Frame1, Frame2, Frame21, Frame22, Frame23, HeaderFrame1, InputGroup, PaymentMethods } from "./style";
 import { MiniCard } from "../../components/MiniCard";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 
@@ -57,22 +57,22 @@ export function Checkout() {
                   <MiniCard />
                   <MiniCard />
 
-                  <div>
+                  <Frame21>
                     <p>Total de itens</p>
                     <p>R$ 29,90</p>
-                  </div>
+                  </Frame21>
 
-                  <div>
+                  <Frame22>
                     <p>Entrega</p>
                     <p>R$ 3,50</p>
-                  </div>
+                  </Frame22>
 
-                  <div>
+                  <Frame23>
                     <strong>Total</strong>
                     <strong>R$ 33,20</strong>
-                  </div>
+                  </Frame23>
 
-                  <button type="submit">Confirmar Pedido</button>
+                  <Enviar type="submit">Confirmar Pedido</Enviar>
                 </Frame2>
               </div>
             </div>
