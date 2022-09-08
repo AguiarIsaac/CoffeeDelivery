@@ -37,6 +37,11 @@ export const Counter = styled.div`
     color: ${props => props.theme.colors.purple};
     cursor: pointer;
     font-size: 20px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: ${props => props.theme.colors.purpleDark};
+    }
   }
 `
 
@@ -67,5 +72,11 @@ export const ButtonRemove = styled.button`
 
   svg {
     color: ${props => props.theme.colors.purple};
+  }
+
+  transition: all 0.2s;
+
+  &:hover {
+    background: ${props => props.theme.colors.baseHover};
   }
 `

@@ -52,6 +52,12 @@ export const InputGroup = styled.div`
     border: 1px solid ${props => props.theme.colors.baseButton};
     border-radius: 4px;
     color: ${props => props.theme.colors.baseLabel};
+    transition: all 0.2s;
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid ${props => props.theme.colors.yellowDark};
+    }
   }
 
   input#CEP {
@@ -103,7 +109,7 @@ export const PaymentMethods = styled.div`
     margin-bottom: 2rem;
   }
 
-  span svg {
+  span svg, label svg {
     color: ${props => props.theme.colors.purple};
   }
 
@@ -112,21 +118,36 @@ export const PaymentMethods = styled.div`
     gap: 0.75rem;
   }
 
-  div span {
+  label {
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+    cursor: pointer;
     gap: 0.75rem;
     background: #E6E5E5;
     border-radius: 6px;
     width: 11.12rem;
     height: 3.18rem;
     padding: 1rem;
-
+    
     font-size: 10px;
     line-height: 160%;
     text-transform: uppercase;
     color: ${props => props.theme.colors.baseText};
-
+    
+    &:hover {
+      background: ${props => props.theme.colors.baseHover};
+    }
   }
-`
+  input {
+    display: none;
+
+    &:checked + label {
+      border: 1px solid ${props => props.theme.colors.purple};
+      background: ${props => props.theme.colors.purpleLight};
+    }
+  }
+  `
 
 export const Frame2 = styled.div`
   width: 28rem;
@@ -167,4 +188,10 @@ export const Enviar = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   color: ${props => props.theme.colors.white};
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: ${props => props.theme.colors.yellowDark};
+  }
 `

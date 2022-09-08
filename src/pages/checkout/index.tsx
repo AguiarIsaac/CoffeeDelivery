@@ -30,7 +30,7 @@ export function Checkout() {
                   <div>
                     <input type="text" placeholder="Bairro" name="BAIRRO" id="BAIRRO" />
                     <input type="text" placeholder="Cidade" name="CIDADE" id="CIDADE" />
-                    <input type="text" placeholder="UF" name="UF" id="UF" />
+                    <input type="text" placeholder="UF" name="UF" id="UF" maxLength={2} />
                   </div>
                 </InputGroup>
               </Frame1>
@@ -41,9 +41,15 @@ export function Checkout() {
                 <p>O pagamento é feito na entrega. Escolha a forma que desejar pagar</p>
 
                 <div>
-                  <span><CreditCard size={24}/>CARTÃO DE CRÉDITO</span>
-                  <span><Bank size={24} />CARTÃO DE DÉBITO</span>
-                  <span><Money size={24} />DINHEIRO</span>
+                  <input type="checkbox"  name="Credit" id="Credit" />
+                  <label htmlFor="Credit"><CreditCard size={24}/>CARTÃO DE CRÉDITO</label>
+
+                  <input type="checkbox" name="Debit" id="Debit" />
+                  <label htmlFor="Debit"><Bank size={24} />CARTÃO DE DÉBITO</label>
+                  
+                  <input type="checkbox" name="Money" id="Money" />
+                  <label htmlFor="Money"><Money size={24} />DINHEIRO</label>
+                  
                 </div>
 
               </PaymentMethods>

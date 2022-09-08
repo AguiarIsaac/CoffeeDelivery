@@ -20,7 +20,7 @@ export function Card() {
                       <button>+</button>
                     </Counter>
                   
-                  <button>
+                  <button id="Cart">
                     <ShoppingCart/>
                   </button>
                 </CounterCard>

@@ -83,6 +83,15 @@ export const CounterCard = styled.div`
     padding: 2px 4px;
     width: 38px;
     height: 38px;
+
+  }
+
+  button#Cart {
+    transition: all 0.2s;
+    
+    &:hover {
+      background: ${props => props.theme.colors.purple};
+    }
   }
 `
 
