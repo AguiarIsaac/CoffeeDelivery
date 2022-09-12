@@ -16,7 +16,12 @@ export const CardContent = styled.div`
   }
 `
 
-export const Tags = styled.span`
+export const Tags = styled.div`
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+`
+export const Tag = styled.span`
   background: ${props => props.theme.colors.yellowLight};
   border-radius: 100px;
 

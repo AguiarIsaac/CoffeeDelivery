@@ -3,8 +3,12 @@ import { BannerContainer, Benefits, Content, Cards, TextsContainer } from "./sty
 import CoffeePage from '../../assets/img/Banner_CoffeeP.svg'
 import { Card } from "./components/Card";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
+import { useContext } from "react";
+import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Home() {
+
+  const CardsItens = useContext(ShoppingContext)
     return (
       <>
         <BannerContainer>
@@ -29,13 +33,18 @@ export function Home() {
           <h3>Nossos Cafés</h3>
           
           <Cards>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {CardsItens.CoffeList.map(coffe => {
+              return (
+                <Card 
+                  name={coffe.name}
+                  description={coffe.description}
+                  avatar={coffe.avatar}
+                  tags={coffe.tags}
+                  value={coffe.value}
+                  key={coffe.name}
+                />
+              )
+            })}
           </Cards>
         </Content>
       </>
