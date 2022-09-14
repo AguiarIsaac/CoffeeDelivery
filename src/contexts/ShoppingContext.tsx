@@ -26,7 +26,7 @@ interface ShoppingContextProps {
         tags: string[],
         value: number
     }[],
-    AddToCart: (newState: any) => void,
+    AddToCart: (newState: CartItemProps) => void,
     shoppingCart: any // corrigir essa tipagem assim que possivel
 }
 
@@ -60,6 +60,15 @@ export function ShoppingContextProvider ({children}: ContextProps) {
 
         localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
     },[shoppingCart])
+
+    function RecoverData(storage: CartItemProps[]) {
+        if(storage.length == 0) {
+            const storedState = localStorage.getItem('@Coffe-Delivery: shopping-cart-1.0.0',)
+            console.log('teste')
+        }
+    }
+
+    RecoverData(shoppingCart)
 
     function AddToCart(coffeSelected: CartItemProps) {
         
