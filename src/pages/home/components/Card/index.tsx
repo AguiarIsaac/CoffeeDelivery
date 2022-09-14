@@ -3,7 +3,6 @@ import {  ShoppingCart } from "phosphor-react"
 import { useContext, useState } from "react"
 import { ShoppingContext } from "../../../../contexts/ShoppingContext"
 
-
 interface CardProps {
   name: string,
   description: string,
@@ -14,27 +13,27 @@ interface CardProps {
 
 export function Card({name, description, avatar, tags, value}: CardProps) {
 
-  const testeDefunction = useContext(ShoppingContext)
+  const { AddToCart } = useContext(ShoppingContext)
 
-  const [quantidade, setQuantidade] = useState(0)
+  const [quantity, setQuantity] = useState(0)
 
-  function handleQuantidade() {
-    setQuantidade(quantidade + 1)
+  function handleAddQuantity() {
+    setQuantity(quantity + 1)
   }
 
-  function handleRemoveQuantidade() {
-    if(quantidade > 0 ) {
-      setQuantidade(quantidade - 1)
+  function handleRemoveQuantity() {
+    if(quantity > 0 ) {
+      setQuantity(quantity - 1)
     }
   }
 
-  function carrinho() {
+  function ItemCart() {
     const item = {
       name: name,
       value: value,
-      quantity: quantidade
+      quantity: quantity
     }
-    testeDefunction.AddToCart(item)
+    AddToCart(item)
   }
 
   return (
@@ -57,12 +56,12 @@ export function Card({name, description, avatar, tags, value}: CardProps) {
         <span>R$ <strong>{value}</strong></span>
             <CounterCard>
               <Counter>
-                <button onClick={handleRemoveQuantidade}>-</button>
-                  <p>{quantidade}</p>
-                <button onClick={handleQuantidade}>+</button>
+                <button onClick={handleRemoveQuantity}>-</button>
+                  <p>{quantity}</p>
+                <button onClick={handleAddQuantity}>+</button>
               </Counter>
               
-              <button id="Cart" onClick={carrinho}>
+              <button id="Cart" onClick={ItemCart}>
                 <ShoppingCart/>
               </button>
             </CounterCard>

@@ -21,13 +21,15 @@ export const Options = styled.div`
     padding: 8px;
     border-radius: 8px;
   }
-`
 
-// background: #C47F17;
-// /* border-radius: 1000px; */
-// font-size: 10px;
-// font-weight: bold;
-// border-radius: 50%;
-// padding: 2px 6px;
-// margin-top: -40px;
-// margin-left: -21px;
+  span {
+    background: ${props => props.theme.colors.yellowDark};
+    color: ${props => props.theme.colors.backgorund};
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin-top: -40px;
+    margin-left: -21px;
+  }
+`

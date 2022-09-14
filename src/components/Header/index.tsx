@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import { ShoppingContext } from '../../contexts/ShoppingContext'
 
 export function Header() {
-    // const QuantityItensCart = useContext(ShoppingContext)
+    const {shoppingCart} = useContext(ShoppingContext)
 
     return (
         <header>
@@ -17,7 +17,8 @@ export function Header() {
                     <a href="#">
                         <ShoppingCart/>
                     </a>
-                    {/* <span>{QuantityItensCart.ShoppingCart.length}</span> */}
+
+                    {shoppingCart.length > 0 && <span>{shoppingCart.length}</span>}
                 </Options>
             </Navbar>
         </header>

@@ -26,7 +26,8 @@ interface ShoppingContextProps {
         tags: string[],
         value: number
     }[],
-    AddToCart: (newState: any) => void
+    AddToCart: (newState: any) => void,
+    shoppingCart: any // corrigir essa tipagem assim que possivel
 }
 
 interface CartItemProps {
@@ -45,26 +46,30 @@ const InitialValue = {
           value: 6.50,
         },
     ],
-    AddToCart: () => {}
+    AddToCart: () => {},
+    shoppingCart: []
 }
 
 export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
 
 export function ShoppingContextProvider ({children}: ContextProps) {
+    const [shoppingCart, setShoppingCart] = useState<CartItemProps[]>([])
     
-    const [quantity, setQuantity] = useState(0)
-    const [shoppingCart, setShoppingCart] = useState([{}])
-
     function AddToCart(coffeSelected: CartItemProps) {
-        if(shoppingCart.length == 0) {
-            setShoppingCart([coffeSelected])
+        
+        if(coffeSelected.quantity === 0) {
+            window.alert('Adicione uma Quantidade ao seu pedido!')
         } else {
-            setShoppingCart([...shoppingCart, coffeSelected])
+            const duplicate = shoppingCart.find(item => item.name == coffeSelected.name)
+            
+            if (duplicate) {
+                window.alert('Item já adicionado ao carrinho!')
+            } else {
+                setShoppingCart([...shoppingCart, coffeSelected])
+            }
         }
-        // setShoppingCart([...shoppingCart, coffeSelected])
-         console.log(shoppingCart)
     }
-
+    
     const CoffeList = [
         {
         name: 'Expresso Tradicional',
@@ -167,7 +172,7 @@ export function ShoppingContextProvider ({children}: ContextProps) {
     ]
 
     return (
-        <ShoppingContext.Provider value={{CoffeList, AddToCart}}>
+        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart}}>
             {children}
         </ShoppingContext.Provider>
     )
