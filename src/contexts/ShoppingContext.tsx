@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import expressoT from '../assets/img/coffees/expresso.svg'
 import expressoA from '../assets/img/coffees/americano.svg'
 import cremoso from '../assets/img/coffees/expresso_cremoso.svg'
@@ -55,6 +55,12 @@ export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
 export function ShoppingContextProvider ({children}: ContextProps) {
     const [shoppingCart, setShoppingCart] = useState<CartItemProps[]>([])
     
+    useEffect(() => {
+        const stateJSON = JSON.stringify(shoppingCart)
+
+        localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
+    },[shoppingCart])
+
     function AddToCart(coffeSelected: CartItemProps) {
         
         if(coffeSelected.quantity === 0) {
