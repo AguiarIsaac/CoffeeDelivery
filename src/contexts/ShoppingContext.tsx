@@ -27,7 +27,7 @@ interface ShoppingContextProps {
         value: number
     }[],
     AddToCart: (newState: CartItemProps) => void,
-    shoppingCart: CartItemProps[] // corrigir essa tipagem assim que possivel
+    shoppingCart: CartItemProps[]
 }
 
 interface CartItemProps {
@@ -55,41 +55,7 @@ export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
 
 export function ShoppingContextProvider ({children}: ContextProps) {
     const [shoppingCart, setShoppingCart] = useState<CartItemProps[]>([])
-
-    useEffect(() => {
-        const LocalStorage = localStorage.getItem('@Coffe-Delivery: shopping-cart-1.0.0')
-        if(!LocalStorage){return}
-        
-        const convert = JSON.parse(LocalStorage)
-
-        if(shoppingCart.length === 0 && convert) {
-            setShoppingCart(convert)
-        }
-    },[])
-
-    useEffect(() => {
-        if(shoppingCart.length > 0) {
-            const stateJSON = JSON.stringify(shoppingCart)
-            localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
-        }
-
-    }, [shoppingCart])
-
-    function AddToCart(coffeSelected: CartItemProps) {
-        
-        if(coffeSelected.quantity === 0) {
-            window.alert('Adicione uma Quantidade ao seu pedido!')
-        } else {
-            const duplicate = shoppingCart.find(item => item.name == coffeSelected.name)
-            
-            if (duplicate) {
-                window.alert('Item já adicionado ao carrinho!')
-            } else {
-                setShoppingCart([...shoppingCart, coffeSelected])
-            }
-        }
-    }
-
+    
     const CoffeList = [
         {
         name: 'Expresso Tradicional',
@@ -190,6 +156,40 @@ export function ShoppingContextProvider ({children}: ContextProps) {
         value: 9.90,
         },
     ]
+
+    useEffect(() => {
+        const LocalStorage = localStorage.getItem('@Coffe-Delivery: shopping-cart-1.0.0')
+        if(!LocalStorage){return}
+        
+        const convert = JSON.parse(LocalStorage)
+
+        if(shoppingCart.length === 0 && convert) {
+            setShoppingCart(convert)
+        }
+    },[])
+
+    useEffect(() => {
+        if(shoppingCart.length > 0) {
+            const stateJSON = JSON.stringify(shoppingCart)
+            localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
+        }
+
+    }, [shoppingCart])
+
+    function AddToCart(coffeSelected: CartItemProps) {
+        
+        if(coffeSelected.quantity === 0) {
+            window.alert('Adicione uma Quantidade ao seu pedido!')
+        } else {
+            const duplicate = shoppingCart.find(item => item.name == coffeSelected.name)
+            
+            if (duplicate) {
+                window.alert('Item já adicionado ao carrinho!')
+            } else {
+                setShoppingCart([...shoppingCart, coffeSelected])
+            }
+        }
+    }
 
     return (
         <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart}}>

@@ -1,5 +1,4 @@
 import { Trash } from 'phosphor-react'
-import { useState } from 'react'
 import { Actions, ButtonRemove, Content, Counter, Info, Price } from './style'
 
 interface CartItemProps {
