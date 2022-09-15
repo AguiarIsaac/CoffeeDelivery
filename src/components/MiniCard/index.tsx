@@ -1,18 +1,26 @@
 import { Trash } from 'phosphor-react'
-import cafe from '../../assets/img/coffees/americano.svg'
+import { useState } from 'react'
 import { Actions, ButtonRemove, Content, Counter, Info, Price } from './style'
 
-export function MiniCard() {
+interface CartItemProps {
+    name: string,
+    avatar: string,
+    value: number,
+    quantity: number
+}
+
+export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
+
     return (
         <Content>
             <Info>
-                <img src={cafe} alt="cafezinho" />
+                <img src={avatar} alt="cafezinho" />
                 <div className="details">
-                    <p>Expresso Tradicional</p>
+                    <p>{name}</p>
                     <Actions>
                         <Counter>
                             <button>-</button>
-                            <p>1</p>
+                            <p>{quantity}</p>
                             <button>+</button>
                         </Counter>
 
@@ -25,7 +33,7 @@ export function MiniCard() {
                     </Actions>
                 </div>
             </Info>
-            <Price>R$ 9,90</Price>
+            <Price>R$ {value.toFixed(2)}</Price>
         </Content>
     )
 }

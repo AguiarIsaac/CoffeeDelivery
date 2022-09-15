@@ -64,9 +64,13 @@ export function Checkout() {
 
             <div>
               <Frame2>
-                <MiniCard />
-                <MiniCard />
-
+                {ShoppingCart.shoppingCart.map(item => 
+                  { return <MiniCard 
+                    name={item.name} 
+                    avatar={item.avatar} 
+                    quantity={item.quantity} 
+                    value={item.value}
+                    key={item.name}/>})}
                 <Frame21>
                   <p>Total de itens</p>
                   <p>R$ 29,90</p>

@@ -32,6 +32,7 @@ interface ShoppingContextProps {
 
 interface CartItemProps {
     name: string,
+    avatar: string,
     value: number,
     quantity: number
 }

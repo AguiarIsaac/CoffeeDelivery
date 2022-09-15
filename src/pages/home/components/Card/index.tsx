@@ -14,25 +14,26 @@ interface CardProps {
 
 export function Card({name, description, avatar, tags, value}: CardProps) {
   const testeDefunction = useContext(ShoppingContext)
-  const [quantidade, setQuantidade] = useState(0)
+  const [quantity, setQuantity] = useState(0)
 
-  function handleQuantidade() {
-    setQuantidade(quantidade + 1)
+  function handleQuantity() {
+    setQuantity(quantity + 1)
   }
   
-  function handleRemoveQuantidade() {
-    if(quantidade > 0 ) {
-      setQuantidade(quantidade - 1)
+  function handleRemoveQuantity() {
+    if(quantity > 0 ) {
+      setQuantity(quantity - 1)
     }
   }
 
-  function carrinho() {
-    const item = {
+  function InsertTocart() {
+    const coffee = {
       name: name,
+      avatar: avatar,
       value: value,
-      quantity: quantidade
+      quantity: quantity
     }
-    testeDefunction.AddToCart(item)
+    testeDefunction.AddToCart(coffee)
   }
 
   return (
@@ -52,15 +53,15 @@ export function Card({name, description, avatar, tags, value}: CardProps) {
       <Description>{description}</Description>
 
       <BuyContent>
-        <span>R$ <strong>{value}</strong></span>
+        <span>R$ <strong>{value.toFixed(2)}</strong></span>
             <CounterCard>
               <Counter>
-                <button onClick={handleRemoveQuantidade}>-</button>
-                  <p>{quantidade}</p>
-                <button onClick={handleQuantidade}>+</button>
+                <button onClick={handleRemoveQuantity}>-</button>
+                  <p>{quantity}</p>
+                <button onClick={handleQuantity}>+</button>
               </Counter>
               
-              <button id="Cart" onClick={carrinho}>
+              <button id="Cart" onClick={InsertTocart}>
                 <ShoppingCart/>
               </button>
             </CounterCard>
