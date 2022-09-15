@@ -4,6 +4,8 @@ import { Navbar, Options } from './style'
 import { ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { ShoppingContext } from '../../contexts/ShoppingContext'
+import { NavLink } from 'react-router-dom'
+import { Checkout } from '../../pages/checkout'
 
 export function Header() {
     const {shoppingCart} = useContext(ShoppingContext)
@@ -11,12 +13,16 @@ export function Header() {
     return (
         <header>
             <Navbar>
-                <img src={logo} alt="Logomarca" />
+                <NavLink to={'/'}>
+                    <img src={logo} alt="Logomarca" />
+                </NavLink>
+                
                 <Options>
                     <img src={location} alt="Localização" />
-                    <a href="#">
+
+                    <NavLink to={'Checkout'}>
                         <ShoppingCart/>
-                    </a>
+                    </NavLink>
 
                     {shoppingCart.length > 0 && <span>{shoppingCart.length}</span>}
                 </Options>
