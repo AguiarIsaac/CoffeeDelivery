@@ -27,7 +27,7 @@ interface ShoppingContextProps {
         value: number
     }[],
     AddToCart: (newState: CartItemProps) => void,
-    shoppingCart: any // corrigir essa tipagem assim que possivel
+    shoppingCart: CartItemProps[] // corrigir essa tipagem assim que possivel
 }
 
 interface CartItemProps {
@@ -54,21 +54,25 @@ export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
 
 export function ShoppingContextProvider ({children}: ContextProps) {
     const [shoppingCart, setShoppingCart] = useState<CartItemProps[]>([])
-    
+
     useEffect(() => {
-        const stateJSON = JSON.stringify(shoppingCart)
+        const LocalStorage = localStorage.getItem('@Coffe-Delivery: shopping-cart-1.0.0')
+        if(!LocalStorage){return}
+        
+        const convert = JSON.parse(LocalStorage)
 
-        localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
-    },[shoppingCart])
-
-    function RecoverData(storage: CartItemProps[]) {
-        if(storage.length == 0) {
-            const storedState = localStorage.getItem('@Coffe-Delivery: shopping-cart-1.0.0',)
-            console.log('teste')
+        if(shoppingCart.length === 0 && convert) {
+            setShoppingCart(convert)
         }
-    }
+    },[])
 
-    RecoverData(shoppingCart)
+    useEffect(() => {
+        if(shoppingCart.length > 0) {
+            const stateJSON = JSON.stringify(shoppingCart)
+            localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
+        }
+
+    }, [shoppingCart])
 
     function AddToCart(coffeSelected: CartItemProps) {
         
@@ -84,7 +88,7 @@ export function ShoppingContextProvider ({children}: ContextProps) {
             }
         }
     }
-    
+
     const CoffeList = [
         {
         name: 'Expresso Tradicional',
