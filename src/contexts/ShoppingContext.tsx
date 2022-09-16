@@ -13,6 +13,7 @@ import cubano from '../assets/img/coffees/cubano.svg'
 import havaiano from '../assets/img/coffees/havaiano.svg'
 import arabe from '../assets/img/coffees/arabe.svg'
 import irlandes from '../assets/img/coffees/irlandes.svg'
+import { ShoppingCart } from 'phosphor-react';
 
 interface ContextProps {
     children: ReactNode
@@ -28,7 +29,8 @@ interface ShoppingContextProps {
     }[],
     AddToCart: (newState: CartItemProps) => void,
     shoppingCart: CartItemProps[],
-    ChangeQuantityCoffee: (newState: CartItemProps) => void
+    ChangeQuantityCoffee: (newState: CartItemProps) => void,
+    RemoveCoffe: (newState: CartItemProps) => void
 }
 
 interface CartItemProps {
@@ -50,7 +52,8 @@ const InitialValue = {
     ],
     AddToCart: () => {},
     shoppingCart: [],
-    ChangeQuantityCoffee: () => {}
+    ChangeQuantityCoffee: () => {},
+    RemoveCoffe: () => {}
 }
 
 export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
@@ -176,6 +179,7 @@ export function ShoppingContextProvider ({children}: ContextProps) {
             localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
         }
 
+        console.log(shoppingCart)
     }, [shoppingCart])
 
     function AddToCart(coffeSelected: CartItemProps) {
@@ -194,17 +198,27 @@ export function ShoppingContextProvider ({children}: ContextProps) {
     }
 
     function ChangeQuantityCoffee(coffeSelected: CartItemProps) {
-        const update = shoppingCart.map(item => {
-            if(item.quantity === coffeSelected.quantity) {
-                item.quantity = coffeSelected.quantity
-            }
-        })
+        
+        const newList = shoppingCart
 
-        setShoppingCart(update)
+        for(let c = 0; c < newList.length; c++) {
+            if(newList[c].name == coffeSelected.name) {
+                newList[c].quantity = coffeSelected.quantity
+            }
+        }
+
+        setShoppingCart(newList)
+        
+    }
+
+    function RemoveCoffe(coffeSelected: CartItemProps) {
+        const NewList = shoppingCart.filter(coffee => coffee.name != coffeSelected.name)
+
+        setShoppingCart(NewList)
     }
 
     return (
-        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee}}>
+        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee, RemoveCoffe}}>
             {children}
         </ShoppingContext.Provider>
     )

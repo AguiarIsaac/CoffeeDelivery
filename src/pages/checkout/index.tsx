@@ -1,15 +1,20 @@
 import { Enviar, FormContainer, Frame1, Frame2, Frame21, Frame22, Frame23, HeaderFrame1, InputGroup, PaymentMethods } from "./style";
-import { MiniCard } from "../../components/MiniCard";
+import { MiniCard } from "./components/MiniCard";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, ShoppingCart } from "phosphor-react";
-import { useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Checkout() {
   const ShoppingCart = useContext(ShoppingContext)
   
+  function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault()
+  }
+
+
   return (
       <>
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit}>
           <div>
             <h4>Complete seu pedido</h4>
             <Frame1>

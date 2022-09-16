@@ -1,6 +1,6 @@
 import { Trash } from 'phosphor-react'
 import { useContext, useState } from 'react'
-import { ShoppingContext } from '../../contexts/ShoppingContext'
+import { ShoppingContext } from '../../../../contexts/ShoppingContext'
 import { Actions, ButtonRemove, Content, Counter, Info, Price } from './style'
 
 interface CartItemProps {
@@ -12,7 +12,7 @@ interface CartItemProps {
 
 export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
 
-    const CardsItens = useContext(ShoppingContext)
+    const CartsItens = useContext(ShoppingContext)
 
     const [newQuantity, setNewQuantity] = useState(quantity)
 
@@ -23,7 +23,7 @@ export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
             value: value,
             quantity:newQuantity
         }
-        CardsItens.ChangeQuantityCoffee(item)
+         CartsItens.ChangeQuantityCoffee(item)
     }
 
     function handleAddQuantity() {
@@ -36,6 +36,17 @@ export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
             setNewQuantity(newQuantity - 1)
         }
         SendNewQuantity()
+    }
+
+    function handleRemoveItem() {
+        const item = {
+            name: name,
+            avatar: avatar,
+            value: value,
+            quantity:newQuantity
+        }
+        
+        CartsItens.RemoveCoffe(item)
     }
 
     return (
@@ -52,7 +63,7 @@ export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
                         </Counter>
 
                         <div>
-                            <ButtonRemove>
+                            <ButtonRemove onClick={handleRemoveItem}>
                                 <Trash />
                                 REMOVER
                             </ButtonRemove>
