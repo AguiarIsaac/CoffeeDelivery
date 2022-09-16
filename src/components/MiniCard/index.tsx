@@ -1,4 +1,6 @@
 import { Trash } from 'phosphor-react'
+import { useContext, useState } from 'react'
+import { ShoppingContext } from '../../contexts/ShoppingContext'
 import { Actions, ButtonRemove, Content, Counter, Info, Price } from './style'
 
 interface CartItemProps {
@@ -10,6 +12,32 @@ interface CartItemProps {
 
 export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
 
+    const CardsItens = useContext(ShoppingContext)
+
+    const [newQuantity, setNewQuantity] = useState(quantity)
+
+    function SendNewQuantity() {
+        const item = {
+            name: name,
+            avatar: avatar,
+            value: value,
+            quantity:newQuantity
+        }
+        CardsItens.ChangeQuantityCoffee(item)
+    }
+
+    function handleAddQuantity() {
+        setNewQuantity( newQuantity + 1)
+        SendNewQuantity()
+    }
+
+    function handleRemoveQuantity() {
+        if(newQuantity > 0) {
+            setNewQuantity(newQuantity - 1)
+        }
+        SendNewQuantity()
+    }
+
     return (
         <Content>
             <Info>
@@ -18,9 +46,9 @@ export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
                     <p>{name}</p>
                     <Actions>
                         <Counter>
-                            <button>-</button>
-                            <p>{quantity}</p>
-                            <button>+</button>
+                            <button onClick={handleRemoveQuantity}>-</button>
+                            <p>{newQuantity}</p>
+                            <button onClick={handleAddQuantity}>+</button>
                         </Counter>
 
                         <div>

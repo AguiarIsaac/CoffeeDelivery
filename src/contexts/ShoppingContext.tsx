@@ -27,7 +27,8 @@ interface ShoppingContextProps {
         value: number
     }[],
     AddToCart: (newState: CartItemProps) => void,
-    shoppingCart: CartItemProps[]
+    shoppingCart: CartItemProps[],
+    ChangeQuantityCoffee: (newState: CartItemProps) => void
 }
 
 interface CartItemProps {
@@ -48,7 +49,8 @@ const InitialValue = {
         },
     ],
     AddToCart: () => {},
-    shoppingCart: []
+    shoppingCart: [],
+    ChangeQuantityCoffee: () => {}
 }
 
 export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
@@ -191,8 +193,18 @@ export function ShoppingContextProvider ({children}: ContextProps) {
         }
     }
 
+    function ChangeQuantityCoffee(coffeSelected: CartItemProps) {
+        const update = shoppingCart.map(item => {
+            if(item.quantity === coffeSelected.quantity) {
+                item.quantity = coffeSelected.quantity
+            }
+        })
+
+        setShoppingCart(update)
+    }
+
     return (
-        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart}}>
+        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee}}>
             {children}
         </ShoppingContext.Provider>
     )
