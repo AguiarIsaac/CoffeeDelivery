@@ -15,6 +15,25 @@ export function Checkout() {
 
   function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
+
+
+    // function pagamento() {
+    //   const itensCheck = event.target.checkbox
+    //   for(let c = 0; c < )
+    // }
+    const inputs = {
+      cep: event.target.CEP.value,
+      rua:event.target.RUA.value,
+      num:event.target.NUM.value,
+      comp:event.target.COMP.value,
+      bairro:event.target.BAIRRO.value,
+      cidade:event.target.CIDADE.value,
+      uf:event.target.UF.value
+    }
+
+    console.log(inputs)
+    const itensCheck = event.target.checkbox
+    console.log(typeof(itensCheck))
   }
   return (
       <>
@@ -54,14 +73,14 @@ export function Checkout() {
               <p>O pagamento é feito na entrega. Escolha a forma que desejar pagar</p>
 
               <div>
-                <input type="checkbox"  name="Credit" id="Credit" />
-                <label htmlFor="Credit"><CreditCard size={24}/>CARTÃO DE CRÉDITO</label>
+                <input type="checkbox"  name="checkbox" id="Credito" />
+                <label htmlFor="Credito"><CreditCard size={24}/>CARTÃO DE CRÉDITO</label>
 
-                <input type="checkbox" name="Debit" id="Debit" />
-                <label htmlFor="Debit"><Bank size={24} />CARTÃO DE DÉBITO</label>
+                <input type="checkbox" name="checkbox" id="Debito" />
+                <label htmlFor="Debito"><Bank size={24} />CARTÃO DE DÉBITO</label>
                 
-                <input type="checkbox" name="Money" id="Money" />
-                <label htmlFor="Money"><Money size={24} />DINHEIRO</label>
+                <input type="checkbox" name="checkbox" id="Dinheiro" />
+                <label htmlFor="Dinheiro"><Money size={24} />DINHEIRO</label>
                 
               </div>
 
