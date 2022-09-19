@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Title = styled.div`
+  margin: 0 auto;
+  max-width: 1300px;
   margin-top: 5rem;
   margin-bottom: 2.5rem;
 
@@ -28,6 +30,9 @@ export const ContentInfo = styled.div`
  align-items: center;
  gap: 6.375rem;
  flex-wrap: wrap;
+
+  margin: 0 auto;
+  max-width: 1300px;
 `
 
 export const OrderInfo = styled.div`
@@ -40,6 +45,7 @@ export const OrderInfo = styled.div`
   position: relative;
   background: ${props => props.theme.colors.backgorund};
   border-radius: 6px 32px;
+  margin-bottom: 1rem;
 
   &::after {
     content: "";

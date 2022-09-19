@@ -1,17 +1,21 @@
 import { Enviar, FormContainer, Frame1, Frame2, Frame21, Frame22, Frame23, HeaderFrame1, InputGroup, PaymentMethods } from "./style";
 import { MiniCard } from "./components/MiniCard";
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, ShoppingCart } from "phosphor-react";
-import { ChangeEvent, useContext } from "react";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money} from "phosphor-react";
+import { ChangeEvent, useContext, useState} from "react";
 import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Checkout() {
   const ShoppingCart = useContext(ShoppingContext)
   
+  const [total, setTotal] = useState(3.50)
+
+  function handleSetTotal(value: number) {
+    setTotal(value)
+  }
+
   function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
   }
-
-
   return (
       <>
         <FormContainer onSubmit={handleSubmit}>
@@ -75,10 +79,13 @@ export function Checkout() {
                     avatar={item.avatar} 
                     quantity={item.quantity} 
                     value={item.value}
-                    key={item.name}/>})}
+                    key={item.name}
+                    total={total}
+                    setTotal={handleSetTotal}
+                    />})}
                 <Frame21>
                   <p>Total de itens</p>
-                  <p>R$ 29,90</p>
+                  <p>R$ {total.toFixed(2)}</p>
                 </Frame21>
 
                 <Frame22>
@@ -88,7 +95,7 @@ export function Checkout() {
 
                 <Frame23>
                   <strong>Total</strong>
-                  <strong>R$ 33,20</strong>
+                  <strong>R$ {total.toFixed(2)}</strong>
                 </Frame23>
 
                 <Enviar type="submit">Confirmar Pedido</Enviar>

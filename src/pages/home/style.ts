@@ -4,8 +4,10 @@ export const BannerContainer = styled.section`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin: 0 auto;
   margin-top: 5.875rem;
   margin-bottom: 7rem;
+  max-width: 1300px;
 `
 
 export const TextsContainer = styled.div`
@@ -69,6 +71,8 @@ export const Benefits = styled.div`
 `
 
 export const Content = styled.section`
+  margin: 0 auto;
+  max-width: 1300px;
   h3 {
     margin-bottom: 2.125rem;
     font-family: 'Baloo 2';
@@ -86,4 +90,5 @@ export const Cards = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
+  justify-content: center;
 `
