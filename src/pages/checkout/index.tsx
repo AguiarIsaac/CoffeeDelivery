@@ -1,11 +1,15 @@
 import { Enviar, FormContainer, Frame1, Frame2, Frame21, Frame22, Frame23, HeaderFrame1, InputGroup, PaymentMethods } from "./style";
 import { MiniCard } from "./components/MiniCard";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money} from "phosphor-react";
-import { ChangeEvent, useContext, useState} from "react";
+import { ChangeEvent, useContext} from "react";
 import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Checkout() {
   const ShoppingCart = useContext(ShoppingContext)
+  
+  const frete = 3.50
+  const TotalItens = ShoppingCart.ValueTotal
+  const Total = TotalItens + frete
 
   function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -21,6 +25,7 @@ export function Checkout() {
     }
     const itensCheck = event.target.checkbox
   }
+  
   return (
       <>
         <FormContainer onSubmit={handleSubmit}>
@@ -88,7 +93,7 @@ export function Checkout() {
                     />})}
                 <Frame21>
                   <p>Total de itens</p>
-                  <p>R$</p>
+                  <p>R${TotalItens.toFixed(2)}</p>
                 </Frame21>
 
                 <Frame22>
@@ -98,7 +103,7 @@ export function Checkout() {
 
                 <Frame23>
                   <strong>Total</strong>
-                  <strong>R$</strong>
+                  <strong>R$ {Total.toFixed(2)}</strong>
                 </Frame23>
 
                 <Enviar type="submit">Confirmar Pedido</Enviar>

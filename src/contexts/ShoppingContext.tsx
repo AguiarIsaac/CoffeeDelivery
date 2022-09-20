@@ -13,7 +13,6 @@ import cubano from '../assets/img/coffees/cubano.svg'
 import havaiano from '../assets/img/coffees/havaiano.svg'
 import arabe from '../assets/img/coffees/arabe.svg'
 import irlandes from '../assets/img/coffees/irlandes.svg'
-import { ShoppingCart } from 'phosphor-react';
 
 interface ContextProps {
     children: ReactNode
@@ -30,7 +29,8 @@ interface ShoppingContextProps {
     AddToCart: (newState: CartItemProps) => void,
     shoppingCart: CartItemProps[],
     ChangeQuantityCoffee: (newState: CartItemProps) => void,
-    RemoveCoffe: (newState: CartItemProps) => void
+    RemoveCoffe: (newState: CartItemProps) => void,
+    ValueTotal: number
 }
 
 interface CartItemProps {
@@ -53,14 +53,17 @@ const InitialValue = {
     AddToCart: () => {},
     shoppingCart: [],
     ChangeQuantityCoffee: () => {},
-    RemoveCoffe: () => {}
+    RemoveCoffe: () => {},
+    ValueTotal: 0
 }
 
 export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
 
 export function ShoppingContextProvider ({children}: ContextProps) {
+
     const [shoppingCart, setShoppingCart] = useState<CartItemProps[]>([])
-    
+    const [ValueTotal, setValueTotal] = useState(0)
+
     const CoffeList = [
         {
         name: 'Expresso Tradicional',
@@ -170,6 +173,7 @@ export function ShoppingContextProvider ({children}: ContextProps) {
 
         if(shoppingCart.length === 0 && convert) {
             setShoppingCart(convert)
+            CalcValueTotal()
         }
     },[])
 
@@ -179,7 +183,7 @@ export function ShoppingContextProvider ({children}: ContextProps) {
             localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
         }
 
-        console.log(shoppingCart)
+        CalcValueTotal()
     }, [shoppingCart])
 
     function AddToCart(coffeSelected: CartItemProps) {
@@ -220,8 +224,17 @@ export function ShoppingContextProvider ({children}: ContextProps) {
         setShoppingCart(NewList)
     }
 
+    function CalcValueTotal() {
+        let calc = 0
+        for(let c = 0; c < shoppingCart.length; c++) {
+            calc += shoppingCart[c].value * shoppingCart[c].quantity
+        }
+
+        setValueTotal(calc)
+    }
+
     return (
-        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee, RemoveCoffe}}>
+        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee, RemoveCoffe, ValueTotal}}>
             {children}
         </ShoppingContext.Provider>
     )
