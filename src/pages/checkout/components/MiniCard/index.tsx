@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { ShoppingContext } from '../../../../contexts/ShoppingContext'
 import { Actions, ButtonRemove, Content, Counter, Info, Price } from './style'
 
@@ -7,44 +7,43 @@ interface CartItemProps {
     name: string,
     avatar: string,
     value: number,
-    quantity: number,
-    total: number,
-    setTotal: (newState: number) => void
+    quantity: number
   }
 
-export function MiniCard({name, avatar, value, quantity, setTotal, total}: CartItemProps) {
+export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
     const ShoppingCart = useContext(ShoppingContext)
 
     const [newQuantity, setNewQuantity] = useState(quantity)
-    const [newValue, setNewValue] = useState(value)
+    const [newValue, setNewValue] = useState(value * quantity)
 
 
-    function SendNewQuantity() {
+    function SendNewQuantity(quantity: number) {
         const item = {
             name: name,
             avatar: avatar,
             value: value,
-            quantity:newQuantity
+            quantity:quantity
         }
         ShoppingCart.ChangeQuantityCoffee(item)
     }
 
     function handleAddQuantity() {
-        setNewQuantity( newQuantity + 1)
+
+        const addedQuantity = newQuantity + 1
+
+        setNewQuantity(addedQuantity)
         setNewValue(newValue + value)
-        setTotal(total + newValue)
-        console.log(total)
-        SendNewQuantity()
+        SendNewQuantity(addedQuantity)
     }
 
     function handleRemoveQuantity() {
         if(newQuantity > 0) {
-            setNewQuantity(newQuantity - 1)
+            const addedQuantity = newQuantity - 1
+            setNewQuantity(addedQuantity)
             setNewValue(newValue - value)
-            setTotal(total - newValue)
-            console.log(total)
+
+            SendNewQuantity(addedQuantity)
         }
-        SendNewQuantity()
     }
 
     function handleRemoveItem() {

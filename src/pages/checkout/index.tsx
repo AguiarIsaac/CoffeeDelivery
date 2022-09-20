@@ -6,21 +6,10 @@ import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Checkout() {
   const ShoppingCart = useContext(ShoppingContext)
-  
-  const [total, setTotal] = useState(3.50)
-
-  function handleSetTotal(value: number) {
-    setTotal(value)
-  }
 
   function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
 
-
-    // function pagamento() {
-    //   const itensCheck = event.target.checkbox
-    //   for(let c = 0; c < )
-    // }
     const inputs = {
       cep: event.target.CEP.value,
       rua:event.target.RUA.value,
@@ -30,10 +19,7 @@ export function Checkout() {
       cidade:event.target.CIDADE.value,
       uf:event.target.UF.value
     }
-
-    console.log(inputs)
     const itensCheck = event.target.checkbox
-    console.log(typeof(itensCheck))
   }
   return (
       <>
@@ -99,12 +85,10 @@ export function Checkout() {
                     quantity={item.quantity} 
                     value={item.value}
                     key={item.name}
-                    total={total}
-                    setTotal={handleSetTotal}
                     />})}
                 <Frame21>
                   <p>Total de itens</p>
-                  <p>R$ {total.toFixed(2)}</p>
+                  <p>R$</p>
                 </Frame21>
 
                 <Frame22>
@@ -114,7 +98,7 @@ export function Checkout() {
 
                 <Frame23>
                   <strong>Total</strong>
-                  <strong>R$ {total.toFixed(2)}</strong>
+                  <strong>R$</strong>
                 </Frame23>
 
                 <Enviar type="submit">Confirmar Pedido</Enviar>

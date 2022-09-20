@@ -199,15 +199,18 @@ export function ShoppingContextProvider ({children}: ContextProps) {
 
     function ChangeQuantityCoffee(coffeSelected: CartItemProps) {
         
-        const newList = shoppingCart
-
-        for(let c = 0; c < newList.length; c++) {
-            if(newList[c].name == coffeSelected.name) {
-                newList[c].quantity = coffeSelected.quantity
+        const newCart = shoppingCart.map(item => {
+            if (item.name === coffeSelected.name) {
+                return {
+                    ...item,
+                    quantity: coffeSelected.quantity
+                }
             }
-        }
-
-        setShoppingCart(newList)
+    
+            return item
+        })
+    
+        setShoppingCart(newCart)
         
     }
 
