@@ -14,18 +14,32 @@ export function Checkout() {
   function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
 
+    function PaymentMethod() {
+      const CheckBox = event.target.checkbox
+
+      for(let c = 0; c < CheckBox.length; c++) {
+        if( CheckBox[c].checked == true) {
+          return CheckBox[c].id
+        }
+      }
+    }
+
     const inputs = {
       cep: event.target.CEP.value,
-      rua:event.target.RUA.value,
-      num:event.target.NUM.value,
-      comp:event.target.COMP.value,
-      bairro:event.target.BAIRRO.value,
-      cidade:event.target.CIDADE.value,
-      uf:event.target.UF.value
+      address: event.target.RUA.value,
+      number: event.target.NUM.value,
+      complement: event.target.COMP.value,
+      district: event.target.BAIRRO.value,
+      city: event.target.CIDADE.value,
+      uf: event.target.UF.value,
+      payment: PaymentMethod()
     }
-    const itensCheck = event.target.checkbox
+
+
+    ShoppingCart.SaveFormData(inputs)
+
   }
-  
+
   return (
       <>
         <FormContainer onSubmit={handleSubmit}>
@@ -42,18 +56,18 @@ export function Checkout() {
               </HeaderFrame1>
               
               <InputGroup>
-                <input type="text" placeholder="CEP" name="CEP" id="CEP" />
-                <input type="text" placeholder="Rua" name="RUA" id="RUA" />
+                <input type="text" placeholder="CEP" name="CEP" id="CEP" required/>
+                <input type="text" placeholder="Rua" name="RUA" id="RUA" required/>
 
                 <div>
-                  <input type="text" placeholder="Número" name="NUM" id="NUM" />
-                  <input type="text" placeholder="Complemento" name="COMP" id="COMP"/>  
+                  <input type="text" placeholder="Número" name="NUM" id="NUM" required/>
+                  <input type="text" placeholder="Complemento" name="COMP" id="COMP" required/>  
                 </div>
 
                 <div>
-                  <input type="text" placeholder="Bairro" name="BAIRRO" id="BAIRRO" />
-                  <input type="text" placeholder="Cidade" name="CIDADE" id="CIDADE" />
-                  <input type="text" placeholder="UF" name="UF" id="UF" maxLength={2} />
+                  <input type="text" placeholder="Bairro" name="BAIRRO" id="BAIRRO" required/>
+                  <input type="text" placeholder="Cidade" name="CIDADE" id="CIDADE" required/>
+                  <input type="text" placeholder="UF" name="UF" id="UF" maxLength={2} required/>
                 </div>
               </InputGroup>
             </Frame1>

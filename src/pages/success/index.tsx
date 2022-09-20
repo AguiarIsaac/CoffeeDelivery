@@ -1,9 +1,13 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { Title, ContentInfo, OrderInfo, Infos } from "./style";
 import img from  '../../assets/img/Illustration.svg'
+import { useContext } from "react";
+import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Success() {
-    return (
+
+  const ShoppingCart = useContext(ShoppingContext)
+  return (
         <>
           <Title>
             <h2>Uhu! Pedido confirmado</h2>

@@ -18,6 +18,16 @@ interface ContextProps {
     children: ReactNode
 }
 
+interface FormProps {
+    district: string,
+    address: string,
+    cep: number,
+    city: string,
+    complement: string,
+    number: number,
+    payment: string
+}
+
 interface ShoppingContextProps {
     CoffeList: {
         name: string,
@@ -30,7 +40,9 @@ interface ShoppingContextProps {
     shoppingCart: CartItemProps[],
     ChangeQuantityCoffee: (newState: CartItemProps) => void,
     RemoveCoffe: (newState: CartItemProps) => void,
-    ValueTotal: number
+    ValueTotal: number,
+    form: FormProps | undefined,
+    SaveFormData: (newState: FormProps) => void
 }
 
 interface CartItemProps {
@@ -54,7 +66,17 @@ const InitialValue = {
     shoppingCart: [],
     ChangeQuantityCoffee: () => {},
     RemoveCoffe: () => {},
-    ValueTotal: 0
+    ValueTotal: 0,
+    form: {
+        district: 'string',
+        address: 'string',
+        cep: 0,
+        city: 'string',
+        complement: 'string',
+        number: 0,
+        payment: 'string'
+    },
+    SaveFormData: () => {}
 }
 
 export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
@@ -63,7 +85,8 @@ export function ShoppingContextProvider ({children}: ContextProps) {
 
     const [shoppingCart, setShoppingCart] = useState<CartItemProps[]>([])
     const [ValueTotal, setValueTotal] = useState(0)
-
+    const [form, setForm] = useState<FormProps>()
+    
     const CoffeList = [
         {
         name: 'Expresso Tradicional',
@@ -233,8 +256,15 @@ export function ShoppingContextProvider ({children}: ContextProps) {
         setValueTotal(calc)
     }
 
+    function SaveFormData(FormEnvied: FormProps) {
+        
+        setForm(FormEnvied)
+
+        console.log(form)
+    }
+
     return (
-        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee, RemoveCoffe, ValueTotal}}>
+        <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee, RemoveCoffe, ValueTotal, form, SaveFormData}}>
             {children}
         </ShoppingContext.Provider>
     )
