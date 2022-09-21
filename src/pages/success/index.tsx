@@ -6,7 +6,8 @@ import { ShoppingContext } from "../../contexts/ShoppingContext";
 
 export function Success() {
 
-  const ShoppingCart = useContext(ShoppingContext)
+  const FormInfos = useContext(ShoppingContext)
+
   return (
         <>
           <Title>
@@ -18,7 +19,7 @@ export function Success() {
             <OrderInfo>
               <Infos>
                 <MapPin id="Map" />
-                <p>Entrega em <strong>Rua João Daniel Martinelli, 102</strong><br/>Farrapos - Porto Alegre, RS</p>
+                <p>Entrega em <strong>{FormInfos.form?.address}, {FormInfos.form?.number}</strong><br/>{FormInfos.form?.city} - {FormInfos.form?.uf}</p>
               </Infos>
 
               <Infos>
@@ -28,7 +29,7 @@ export function Success() {
 
               <Infos>
                 <CurrencyDollar id="Dolar"/>
-                <p>Pagamento na entrega<br/><strong>Cartão de crédito</strong></p>
+                <p>Pagamento na entrega<br/><strong>{FormInfos.form?.payment}</strong></p>
               </Infos>
             </OrderInfo>
 

@@ -5,7 +5,6 @@ import { ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { ShoppingContext } from '../../contexts/ShoppingContext'
 import { NavLink } from 'react-router-dom'
-import { Checkout } from '../../pages/checkout'
 
 export function Header() {
     const {shoppingCart} = useContext(ShoppingContext)

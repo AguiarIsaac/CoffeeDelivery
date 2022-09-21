@@ -25,7 +25,8 @@ interface FormProps {
     city: string,
     complement: string,
     number: number,
-    payment: string
+    payment: string,
+    uf: string
 }
 
 interface ShoppingContextProps {
@@ -68,13 +69,14 @@ const InitialValue = {
     RemoveCoffe: () => {},
     ValueTotal: 0,
     form: {
-        district: 'string',
-        address: 'string',
+        district: '',
+        address: '',
         cep: 0,
-        city: 'string',
-        complement: 'string',
+        city: '',
+        complement: '',
         number: 0,
-        payment: 'string'
+        payment: '',
+        uf:''
     },
     SaveFormData: () => {}
 }
@@ -198,6 +200,13 @@ export function ShoppingContextProvider ({children}: ContextProps) {
             setShoppingCart(convert)
             CalcValueTotal()
         }
+
+        const LocalStorageForm = localStorage.getItem('@Coffe-Delivery: form-address-1.0.0')
+        if(!LocalStorageForm){return}
+        if(form == undefined) {
+            const convert = JSON.parse(LocalStorageForm)
+            setForm(convert)
+        }
     },[])
 
     useEffect(() => {
@@ -206,8 +215,17 @@ export function ShoppingContextProvider ({children}: ContextProps) {
             localStorage.setItem('@Coffe-Delivery: shopping-cart-1.0.0', stateJSON)
         }
 
+        if(shoppingCart.length === 0) {
+            localStorage.removeItem('@Coffe-Delivery: shopping-cart-1.0.0')
+        }
+
         CalcValueTotal()
-    }, [shoppingCart])
+
+        if(form != undefined){
+            const stateJSON = JSON.stringify(form)
+            localStorage.setItem('@Coffe-Delivery: form-address-1.0.0', stateJSON)
+        }
+    }, [shoppingCart, form])
 
     function AddToCart(coffeSelected: CartItemProps) {
         
@@ -257,12 +275,12 @@ export function ShoppingContextProvider ({children}: ContextProps) {
     }
 
     function SaveFormData(FormEnvied: FormProps) {
-        
         setForm(FormEnvied)
-
-        console.log(form)
+        setShoppingCart([])
     }
 
+    
+    
     return (
         <ShoppingContext.Provider value={{CoffeList, AddToCart, shoppingCart, ChangeQuantityCoffee, RemoveCoffe, ValueTotal, form, SaveFormData}}>
             {children}
