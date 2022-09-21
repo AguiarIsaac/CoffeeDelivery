@@ -65,13 +65,13 @@ export function MiniCard({name, avatar, value, quantity}: CartItemProps) {
                 <p>{name}</p>
                 <Actions>
                     <Counter>
-                        <button onClick={handleRemoveQuantity}>-</button>
+                        <button type='button' onClick={handleRemoveQuantity}>-</button>
                         <p>{newQuantity}</p>
-                        <button onClick={handleAddQuantity}>+</button>
+                        <button type='button' onClick={handleAddQuantity}>+</button>
                     </Counter>
 
                     <div>
-                        <ButtonRemove onClick={handleRemoveItem}>
+                        <ButtonRemove type='button' onClick={handleRemoveItem}>
                             <Trash />
                             REMOVER
                         </ButtonRemove>
