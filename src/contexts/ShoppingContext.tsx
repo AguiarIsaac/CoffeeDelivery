@@ -53,35 +53,7 @@ interface CartItemProps {
     quantity: number
 }
 
-const InitialValue = {
-    CoffeList: [
-        {
-          name: 'Expresso Tradicional',
-          description: 'O tradicional café feito com água quente e grãos moídos',
-          avatar: 'imagem',
-          tags: ['Tradicional'],
-          value: 6.50,
-        },
-    ],
-    AddToCart: () => {},
-    shoppingCart: [],
-    ChangeQuantityCoffee: () => {},
-    RemoveCoffe: () => {},
-    ValueTotal: 0,
-    form: {
-        district: '',
-        address: '',
-        cep: 0,
-        city: '',
-        complement: '',
-        number: 0,
-        payment: '',
-        uf:''
-    },
-    SaveFormData: () => {}
-}
-
-export const ShoppingContext = createContext<ShoppingContextProps>(InitialValue)
+export const ShoppingContext = createContext({} as ShoppingContextProps)
 
 export function ShoppingContextProvider ({children}: ContextProps) {
 
