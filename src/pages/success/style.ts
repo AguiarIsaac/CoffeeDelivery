@@ -39,7 +39,8 @@ export const OrderInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-width: 32.875rem;
+  width: 100%;
+  max-width: 32.075rem;
   
   padding: 2.5rem;
   position: relative;
@@ -58,6 +59,11 @@ export const OrderInfo = styled.div`
     margin: -1px;
     border-radius: inherit;
     background-image: linear-gradient(77deg, rgba(219,172,44,1) 0%, rgba(128,71,248,1) 100%);
+  }
+
+  img {
+    width: 100%;
+    max-width: 30.75rem;
   }
 `
 

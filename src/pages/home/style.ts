@@ -3,11 +3,17 @@ import styled from 'styled-components'
 export const BannerContainer = styled.section`
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 5.875rem;
   margin-bottom: 7rem;
   max-width: 1300px;
+
+  img {
+    width: 100%;
+    max-width: 29.75rem;
+  }
 `
 
 export const TextsContainer = styled.div`

@@ -2,8 +2,15 @@ import styled from 'styled-components'
 
 export const FormContainer = styled.form`
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
+
+  div.lineForm {
+    @media(max-width: 768px) {
+      width: 100%;
+    }
+  }
 
   h4 {
     margin-bottom: 2rem;
@@ -53,24 +60,25 @@ export const InputGroup = styled.div`
     border-radius: 4px;
     color: ${props => props.theme.colors.baseLabel};
     transition: all 0.2s;
+    width: 100%;
+    }
 
     &:focus-visible {
       outline: none;
       border: 1px solid ${props => props.theme.colors.yellowDark};
     }
-  }
 
   input#CEP {
-    width: 12.5rem;
+    max-width: 12.5rem;
     margin-top: 2rem;
   }
 
   input#RUA {
-    width: 21.75rem;
+    max-width: 21.75rem;
   }
 
   input#NUM, input#BAIRRO {
-    width: 12.5rem;
+    max-width: 12.5rem;
   }
 
   input#COMP {
@@ -78,7 +86,7 @@ export const InputGroup = styled.div`
   }
 
   input#CIDADE {
-    width: 18rem;
+    max-width: 18rem;
   }
 
   input#UF {
@@ -116,6 +124,9 @@ export const PaymentMethods = styled.div`
   div {
     display: flex;
     gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 
   label {
@@ -150,7 +161,7 @@ export const PaymentMethods = styled.div`
   `
 
 export const Frame2 = styled.div`
-  width: 28rem;
+  max-width: 28rem;
   padding: 2.5rem;
   background: ${props => props.theme.colors.baseCard};
   border-radius: 6px 44px;

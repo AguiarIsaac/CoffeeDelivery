@@ -49,7 +49,7 @@ export function Checkout() {
   return (
       <>
         <FormContainer onSubmit={handleSubmit}>
-          <div>
+          <div className="lineForm">
             <h4>Complete seu pedido</h4>
             <Frame1>
 
@@ -98,7 +98,7 @@ export function Checkout() {
             </PaymentMethods>
           </div>
           
-          <div>
+          <div className="lineForm">
             <h4>Cafés selecionados</h4>
 
             <div>
