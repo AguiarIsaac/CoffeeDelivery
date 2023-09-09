@@ -21,4 +21,4 @@
 * Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/AguiarIsaac/CoffeeDelivery).
 
 ## 📜 Licença
-* ToDo List é [MIT licensed](./LICENSE).
+* Coffee Delivery é [MIT licensed](./LICENSE).
